@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body>
+<p>Welcome. Please log in</p>
+<form action="">
+    <label for="usernameInput">Username:</label><input type="text" id="usernameInput"/><br>
+    <label for="passwordInput">Password:</label><input type="password" id="passwordInput"/>
+    <p id="message"></p>
+    <br/> <br/>
+    <a href="#" onclick="VerifyUser()">Log in</a>
+</form>
+<form action="">
+    <fieldset>
+        <legend>Weather Application</legend>
+        <label for="weather">What's the weather like?</label>
+        <select name="" id="weather">
+            <option value="weather" selected disabled>Weather</option>
+            <option value="sunny">Sunny</option>
+            <option value="windy">Windy</option>
+            <option value="rainy">Rainy</option>
+            <option value="snowy">Snowy</option>
+            <option value="cloudy">Cloudy</option>
+        </select>
+        <a href="#" onclick="btnpressed()">GO!</a>
+        <p id="outputText">Weather Advice: </p>
+    </fieldset>
+</form>
+
+
+<script>
+
+    function VerifyUser() {
+        var username = document.getElementById("usernameInput").value;
+        var password = document.getElementById("passwordInput").value;
+        checkUserCreds(username, password);
+    }
+
+    function checkUserCreds(username, password) {
+        var systemUsername = "Bond";
+        var systemPassword = "0070";
+        if (username === systemUsername && password === systemPassword) {
+            document.getElementById("message").innerHTML = "Correct. Logging you in......."
+
+        } else {
+            document.getElementById("message").innerHTML = "Incorrect username or password. try again.."
+        }
+    }
+
+    function btnpressed() {
+        const weatherSelected = document.getElementById("weather").value;
+        let advice;
+
+        switch (weatherSelected) {
+            case "sunny":
+                advice = "Wear your sunglasses.";
+                break;
+            case "windy":
+                advice = "Wear a jacket";
+                break;
+            case "rainy":
+                advice = "Wear a rain coat and carry an umbrella";
+                break;
+            case "snowy":
+                advice = "Dress warmly";
+                break;
+            case "cloudy":
+                advice = "Carry a jacket. It might rain"
+
+
+        }
+        document.getElementById("outputText").innerHTML = "Weather advice: " + advice;
+    }
+</script>
+</body>
+
+</html>

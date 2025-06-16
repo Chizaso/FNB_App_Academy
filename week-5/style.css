@@ -1,0 +1,46 @@
+table {
+    color: #fff;
+    text-align: center;
+    border-collapse: collapse;
+    font: normal 3em "Josefin Sans", sans-serif;
+}
+
+tr {
+    height: 16.02vh;
+    background: #4e494d;
+}
+
+td {
+    width: 25vw;
+    border: 3px solid #4e494d;
+}
+
+#inputBox {
+    background: #4e494d;
+    text-align: right;
+    width: 100%;
+    font-size: 2em;
+    color: #fff;
+    border: 0px;
+}
+
+.digitButton {
+    background-color: #807e88;
+}
+.digitButton:hover {
+    background-color: forestgreen;
+}
+
+.operatorButton {
+    background-color: #ff9e06;
+}
+.operatorButton:hover {
+    background-color: orangered;
+}
+
+.ACButton {
+    background-color: #656165;
+}
+.ACButton:hover {
+    background-color: black;
+}
