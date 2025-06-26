@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Contacts</title>
+</head>
+
+<body onload="getContact()">
+<div id="avatarImage"></div>
+<form id="editform">
+    <label for="firstname">Firstme:</label>
+    <input type="text" id="firstname" name="firstname" readonly><br><br>
+    <label for="lastname">Lastname:</label>
+    <input type="text" id="lastname" name="lastname" readonly><br><br>
+    <label for="mobile">Mobile:</label>
+    <input type="text" id="mobile" name="mobile" readonly><br><br>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" readonly><br><br>
+    <label for="avatar" id="avatarLabel">Change profile image</label><br>
+    <input type="file" id="avatar" name="avatar"><br><br>
+    <button type="submit" value="Submit" id="submitform">Submit</button>
+</form>
+<br>
+<button id="homelink" type="button">Home</button>
+<button id="editContact" type="button">Edit</button>
+<button id="deleteContact" type="button">Delete</button>
+
+<script src="config.js"></script>
+<script src="index.js"></script>
+<script>
+    let id = getId();
+    document.getElementById("homelink").addEventListener("click", homelink);
+    console.log("the id is" + id);
+
+    function getId() {
+        let url = window.location.href;
+        let pos = url.search("=");
+        let id = url.slice(pos + 1);
+        return id;
+    }
+
+    function getContact() {
+        fetch(rootPath + "controller/get-contacts/?=" + id)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                document.getElementById("firstname").value = data[0].firstname;
+                document.getElementById("lastname").value = data[0].lastname;
+                document.getElementById("mobile").value = data[0].mobile;
+                document.getElementById("email").value = data[0].email;
+                document.getElementById("avatarImage").innerHTML = "<img src='" + rootPath + "controller/uploads/" + data[0].avatar + "' width='100' />";
+            })
+
+    }
+
+    function homelink() {
+        window.open("index.html", "_self");
+    }
+</script>
+</body>
+
+</html>

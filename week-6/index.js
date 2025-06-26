@@ -17,7 +17,7 @@ function displayOutput(data) {
 
     for (a in data) {
         output += `
-                <tr>
+                <tr onclick="editContact(${data[a].id})">
                 <td><img src="${rootPath}controller/uploads/${data[a].avatar}" width="40" /></td>
                 <td><h5>${data[a].firstname}</h5></td>
                 <td><h5>${data[a].lastname}</h5></td>
@@ -26,39 +26,47 @@ function displayOutput(data) {
     }
     output += "</table>";
     document.getElementById("table").innerHTML = output;
-}
 
-function AddContacts() {
-    window.open("addContact.html", "_self");
-}
-document.getElementById("submitform").addEventListener("click", submitform)
-document.getElementById("homelink").addEventListener("click", homelink)
 
-function submitform(e) {
-    e.preventDefault();
-    const form = new FormData(document.querySelector("#editform"));
-    form.append("apiKey", apiKey);
+// Adding Contacts
 
-    fetch(rootPath + 'controller/insert-contact/', {
-        method: 'POST',
-        headers: {'Accept': 'application/json, *.*'},
-        body: form
-    })
-        .then(function (response) {
-            return response.text();
+    function AddContacts() {
+        window.open("addContact.html", "_self");
+    }
+
+    document.getElementById("submitform").addEventListener("click", submitform)
+    document.getElementById("homelink").addEventListener("click", homelink)
+
+    function submitform(e) {
+        e.preventDefault();
+        const form = new FormData(document.querySelector("#editform"));
+        form.append("apiKey", apiKey);
+
+        fetch(rootPath + 'controller/insert-contact/', {
+            method: 'POST',
+            headers: {'Accept': 'application/json, *.*'},
+            body: form
         })
-        .then(function (data) {
-            if (data === "1") {
-                alert("Contact successfully added");
-                homelink()
-            } else {
-                alert(data);
-                homelink()
-            }
-        })
-}
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (data) {
+                if (data === "1") {
+                    alert("Contact successfully added");
+                    homelink()
+                } else {
+                    alert(data);
+                    homelink()
+                }
+            })
+    }
 
-function homelink() {
-    window.open("index.html", "_blank");
+    function homelink() {
+        window.open("index.html", "_blank");
 
+    }
+
+    function editContact(id) {
+        window.open("edit-contacts.html? id=" + id, "_self");
+    }
 }
