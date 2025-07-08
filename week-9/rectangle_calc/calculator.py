@@ -1,7 +1,7 @@
-def area(lenght, width):
+def area(length, width):
     """Calculate the area of a rectangle."""
-    return lenght * width   
+    return length * width
 
-def perimeter(lenght, width):
+def perimeter(length, width):
     """Calculate the perimeter of a rectangle."""
-    return 2 * (lenght + width)
+    return 2 * (length + width)

@@ -1,8 +1,8 @@
-'''
+"""
 def greet(name):
-    print(f"Hello, {name}")
-    
-    
+    print(f "Hello, {name}")
+
+
 greet("Alice")
 
 def add(a, b):
@@ -10,7 +10,7 @@ def add(a, b):
 
 result = add(90, 10)
 print(result)
-'''
+"""
 
 def factorial(n):
     if n == 0:
