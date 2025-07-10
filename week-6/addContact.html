@@ -8,7 +8,7 @@
 
 <body>
 <br>
-<form id="editform">
+<form id="editForm">
     <label for="firstname">Firstname:</label>
     <input type="text" id="firstname" name="firstname"><br><br>
     <label for="lastname">Lastname:</label>
@@ -19,19 +19,20 @@
     <input type="text" id="email" name="email"><br><br>
     <label for="avatar">Select a file</label>
     <input type="file" id="avatar" name="avatar"><br><br>
-    <button type="submit" value="Submit" id="submitform">Submit</button>
+    <button type="submit" value="Submit" id="submitForm">Submit</button>
 </form>
 <br>
-<button id="homelink" type="button">Home</button>
+<button id="homeLink" type="button">Home</button>
 
 <script src="config.js"></script>
+<script src="index.js"></script>
 <script>
-    document.getElementById("submitform").addEventListener("click", submitform)
-    document.getElementById("homelink").addEventListener("click", homelink)
+    document.getElementById("submitForm").addEventListener("click", submitForm)
+    document.getElementById("homeLink").addEventListener("click", homeLink)
 
-    function submitform(e) {
+    function submitForm(e) {
         e.preventDefault();
-        const form = new FormData(document.querySelector("#editform"));
+        const form = new FormData(document.querySelector("#editForm"));
         form.append("apiKey", apiKey);
 
         fetch(rootPath + 'controller/insert-contact/', {
@@ -53,10 +54,11 @@
             })
     }
 
-    function homelink() {
+    function homeLink() {
         window.open("index.html", "_self");
 
     }
+
 
 </script>
 </body>
